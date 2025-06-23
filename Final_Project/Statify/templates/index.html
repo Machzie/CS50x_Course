@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome to <span style="color: green">Statify</span>!</h1>
+    <hr class="index-dotted-hr">
+    <h4 class="index-h4">Upload your Spotify streaming history to get started.</h4>
+    <!--TODO: Implement a how-to page for downloading spotify data-->
+    <span>Not sure where to find this? Follow the <a href="/guide" class="index-anchor">how to guide</a>.</span>
+    <hr>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" id="spotify-data" accept=".json">
+        <button type="submit" class="btn-primary">Read Data</button>
+    </form>
+    
+{% endblock %}

@@ -1,0 +1,39 @@
+# STATIFY
+### Video Demo: https://youtu.be/HBgC3dHpx5A
+
+### Description
+Welcome to Statify! 
+
+Statify aims to provide music lovers with a way to see their Spotify streaming stats in a way that isn't possible on Spotify. It also has a 'festival finder' feature, which shows the user which of this year's festivals best suits their music taste. As I am UK based, currently mostly UK festivals are supported, but I intend to widen this as the app grows. 
+
+### Overview
+Statify is a Flask-based web app that just requires a .JSON file upload, which is the format that can be downloaded from the Spotify website. The user then simply uploads this data on the homepage (_index.html_), and can then navigate through the various dashboards to see their streaming stats.
+The HTML template is formatted by _layout.html_ and provides the navigation bar at the top, as well as the search bar, which is common to all HTML templates. I used bootstrap to help design this. The python script _app.py_ contains most of the python script for the back-end of the app, including all the Flask routes and some other functions to process the data into the required format for the various HTML pages. The JSON file from Spotify contains a lot of data not needed for this app, so I strip a lot of that away, and also filter out any songs that weren't played for at least 1 minute. Plotting was done with __plotly__, which I had to learn some basic syntax for as part of this project!
+
+### Dash Main _(dash_main.html)_
+After uploading their data, the user is taken to the main dashboard by default. On the main dashboard, it displays top artists, albums, songs and genres. I wanted to be able to filter by year, to see how my listening habits changed over time, so I added radio buttons where the user could select the year they want stats for. The selectable years are unique to the user's dataset, so they can only filter by years that they actually have data for. The button 'All' is also an option, so the plots generated from the entire dataset can be seen. 
+The script to generate the plots sits within _app.py_, and I used a single function (_create_plot_for_dash_main_) to create the plots for artists, albums and songs, as they had common data processing requirements, and a seperate function (_create_pie_for_dash_main_) for the genres pie chart. 
+
+### Dash Artists / Albums / Songs _(dash_artists/albums/songs.html)_
+These dashboards display the top 10 (by default) artists, albums or songs respectively, from the entire dataset. The user can then tailor the number of entries to be shown (with the slider) and the time range of data to look between. Some Javascript was required here to update values based on the slider. 
+
+### Artist Search _(artist.html)_
+There is a search bar at the top of each page where the user can search for an artist that exists in the database. This functionality works without the user having uploaded any data, and will show which festivals a particular artist is playing this summer. However, the artist pages will also show the user's streaming data for that artist if they have uploaded data. This is in the format of a stacked bar chart (stream count per year, with different albums denoted in different colours).
+
+### Festival Finder _(festival_finder.html)_
+One of the key pieces of functionality of this app is the 'Festival Finder'. This allows the user to find the best festivals for them in the summer, based on their unique music tastes. Within the 'Festival Finder' dropdown in the navbar, there are two options:
++ Supported Festivals: this shows the currently supported festivals, split by country that the festival is based in. Each festival is a hyperlink, which will take you to an individual page for each festival, showing the user how many times they have streamed each headliner, and their top 5 non-headliners. 
++ Festival Finder: the festival finder page shows the top 3 festivals (from the supported database), based on the user's data. It is a fairly rudimentary algorithm which places a higher weighting on headliners. Each artist at the festival will have a 'score', based on their ranking in the user's data (e.g, 1st most streamed artist will have highest score, 10th most streamed will have 10th highest score, etc). The scores are then summed to give the festival a final 'score', which is used to rank them. The cards which are displayed on the Festival Finder page are also designed with the help of Bootstrap. 
+
+### Guide to Importing Data _(guide.html)_
+Finally, I have implemented a very short guide on how to request the data from Spotify, and then import it into the app. 
+
+### Databases
+I had to generate numerous databases using SQL for this project. Within _fest.db_, I have the following tables:
++ artists: ID (primary key), artist name, genre
++ festivals: ID (primary key), festival name, city, country
++ lineups2025: artist ID (foreign key - artists), festival ID (foreign key - festivals), headliner
+I used sqlite3 queries a lot within _app.py_ to get data from these databases, and manipulate the data in conjunction with the pandas dataframe. 
+
+### Design
+I have tried to use a consistent colour pallette throughout. The main colours are dark green and purple (a small nod to the Wimbledon colours - as tennis is another huge passion of mine). For plotting, ChatGPT helped me come up with a colour pallette for plots where I needed 5-6 unique colours which went well together. 

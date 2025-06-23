@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Festivals
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome to Festivals!</h1>
+    <p>The list below shows the currently supported festivals for Festival Finder</p>
+    {% for country in countries %}    
+        <div>
+            <hr class="hr-gradient-green">
+            <h2 class="h2-a">{{ country[0] }}</h2>
+            <ul class="table-ul">
+                {% for festival in festivals %}
+                    {% if festival[3] == country[0] %}
+                        <li>
+                            <img src="{{ url_for('static', filename='thumbnails/' + festival[1] + '.jfif') }}" alt="{{ festival[1] }}" class="festival_img">
+                            <!-- Chat GPT helped with the anchor tag url_for-->
+                            <a href="{{ url_for('festival_page', festival_id=loop.index) }}" class="festival-name">{{ festival[1] }}</a>
+                        </li>   
+                    {% endif %} 
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome to your Dashboard!</h1>
+    <form method="post", action="/dash_main">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="year" value="0" id="btnAll" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnAll">All</label>  
+            {% for year in years %}
+                <input type="radio" class="btn-check" name="year" value="{{ year }}" id="{{ 'btn' ~ year }}" autocomplete="off">
+                <label class="btn btn-outline-primary" for="{{ 'btn' ~ year }}">{{ year }}</label>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            <button class="btn-primary m-3" type="submit">Update!</button>
+        </div>
+    </form>
+    <hr>
+    <!-- TODO: Create summary plots for top artists, albums and songs per year -->
+    <!-- The below code doesn't yet update when the radio buttons are clicked -->
+    <div class="grid-container">
+        <div>
+            <h2>Top Artists</h2>
+            {{ artist_fig | safe }}
+        </div>
+        <div>
+            <h2>Top Albums</h2>
+            {{ album_fig | safe }}
+        </div>
+        <div>
+            <h2>Top Songs</h2>
+            {{ track_fig | safe }}
+        </div>
+        <div>
+            <h2>Top Genres</h2>
+            {{ genre_fig | safe }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+</script>
+{% endblock %}

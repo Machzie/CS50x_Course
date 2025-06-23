@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Festival Finder
+{% endblock %}
+
+{% block main %}
+<h1>Here are your top 3 festivals! 🎪</h1>
+<hr>
+<div class="d-flex flex-row flex-wrap justify-content-center">
+    {% for festival, score in top.items() %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='thumbnails/' + festival + '.jfif') }}" class="card-img-top" alt="{{ festival }}">
+            <div class="card-body">
+                <h5 class="card-title">{{loop.index}}: {{ festival }}</h5>
+                <p class="card-text">{{ details[loop.index0][2] }}, {{ details[loop.index0][3] }}</p>
+                <a href="{{ url_for('festival_page', festival_id=details[loop.index0][0]) }}" class="btn btn-primary">Go to festival page!</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

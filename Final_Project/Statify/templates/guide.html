@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Artist
+{% endblock %}
+
+{% block main %}
+<div>
+    <h2>1. Request Data From Spotify 🎧</h2>
+    <span>Head to <a href="https://open.spotify.com/" class="index-anchor">Spotify.com</a> and request your extended streaming history.</span>
+    <br>
+    <span>You'll find this in your account settings.</span>
+    <hr class="hr-gradient-green">
+    <h2>2. Wait For Data 🕑</h2>
+    <span>Spotify claims this can take up to 30 days, but it's usually much quicker.</span>
+    <hr class="hr-gradient-green-rev">
+    <h2>3. Download Your Data 🔽</h2>
+    <span>You'll receive an email with a link to download your data. The downloaded data will be in JSON format and requires no further pre-processing.</span>
+    <hr class="hr-gradient-green">
+    <h2>4. Import Your Data 📲</h2>
+    <span>Now you're ready to head over to the <a href="/" class="statify-anchor">Statify</a> home page and import your data.</span>
+    <hr class="hr-gradient-green-rev">
+</div>
+
+{% endblock %}

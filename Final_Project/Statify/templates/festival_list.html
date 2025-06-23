@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Festivals
+{% endblock %}
+
+{% block main %}
+    <h1>{{ festival[1] }}</h1>
+    <span class="badge text-bg">{{ festival[2] }}, {{ festival[3] }}</span>
+    <hr>
+    <div>
+        <h2>Your headliner streams:</h2>
+        <ul class="list-group">
+            {% for headliner, plays in headliners.items() %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="ms-2 me-auto">{{ headliner }}</div>
+                <span class="badge text-bg rounded-pill">{{ plays }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>Your top 5 non-headliners:</h2>
+        <ul class="list-group">
+            {% for non_headliner, plays in non_headliners.items() %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="ms-2 me-auto">{{ non_headliner }}</div>
+                <span class="badge text-bg rounded-pill">{{ plays }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

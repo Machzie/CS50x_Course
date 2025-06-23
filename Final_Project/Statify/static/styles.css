@@ -1,0 +1,202 @@
+.navbar-brand {
+    color: green;
+}
+
+.nav-link:hover {
+    color: purple;
+}
+
+.btn-outline-success {
+    color: green;
+}
+
+.btn-outline-success:hover {
+    background-color: green;
+    color: white;
+}
+
+.top-h2 {
+    color: black;
+}
+
+.index-dotted-hr {
+  border-top: 1px dotted green;
+  border-top-width: 10px;
+  height: 10px;
+  width: 10%;   
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.index-h4 {
+    font-weight: 200;
+}
+
+.index-anchor {
+    color: purple;
+}
+
+.index-anchor:hover {
+    color: green;
+}
+
+.statify-anchor {
+    color: green;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.statify-anchor:hover {
+    color: purple;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.span-number-one {
+    font-size: 40px;
+    color: green;
+}
+
+.span-remaining {
+    font-size: 20px;
+    color: purple;
+}
+
+.festival-name {
+    color: purple;
+    font-size: 30px;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.festival-name:hover {
+    color: green;
+}
+
+.btn-primary {
+    background-color:white;
+    color: green;
+    border-radius: 5px;
+    border: solid green;
+    transition-duration: 0.4s;
+    border-width: thin;
+}
+
+.btn-primary:hover {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: solid green;
+    border-width: thin;
+}
+
+.btn-outline-primary {
+    color: green;
+    border-color: green;
+}
+
+.btn-outline-primary:hover {
+    color: white;
+    background-color: green;
+}
+
+.btn-check:checked + .btn {
+    background-color: green;
+    color: white;
+    border-color: green;
+  }
+
+.date_label {
+    color: purple;
+    font-weight: bold;
+}
+
+.slider-div {
+    width: 100%;
+}
+
+.slider {
+    appearance: none;
+    width: 25%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgb(222, 218, 218);
+    color: green;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: green;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.headliner-table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.h2-a {
+    display: inline-block;
+    text-align: left;
+    padding: 2px;
+    border-bottom: 5px dotted purple;
+}
+
+.h2-b {
+    color: green;
+}
+
+.hr-gradient-green {
+    height: 3px;
+    background-image: linear-gradient(to right, green, transparent);
+    border-radius: 5px;
+    border: none;
+}
+
+.hr-gradient-green-rev {
+    height: 3px;
+    background-image: linear-gradient(to left, green, transparent);
+    border-radius: 5px;
+    border: none;
+}
+
+.table-ul {
+    display: table;
+    text-align: left;
+}
+
+.table-ul li {
+    display: table;
+}
+
+.list-group {
+    width: 30%;
+    margin: auto;
+}
+
+.list-group-item {
+    font-weight: 450;
+}
+
+.text-bg {
+    background-color: green;
+}
+
+.festival_img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}

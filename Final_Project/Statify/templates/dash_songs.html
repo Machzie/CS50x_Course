@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<div class="slider-div">
+    <form method="post", action="/dash_songs">
+        <label>Select number of albums to diaplay: </label>
+        <br>
+        <input type="range" min="5" max="100" name="nrows" value="{{ nrows }}" class="slider" id="num_songs_in" oninput="updateNumSongs()" required>
+        <span id="num_songs_out"></span>
+        <br>
+        <label>Select timerange: </label>
+        <br>
+        <label class="date_label">Start Date: </label>
+        <input type="date" name="start_date" required>
+        <label class="date_label">End Date: </label>
+        <input type="date" name="end_date" required>
+        <button class="btn-primary" type="submit">Update!</button>
+    </form>
+</div>
+<div>
+    <br>
+</div>
+<div>
+    <h1>Here are your top {{ nrows }} songs!</h1>
+</div>
+<hr>
+<div>
+    <ol class="list-group list-group-numbered">
+        {% for i in range(nrows) %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="ms-2">
+                <div class="fw-bold">{{ data.master_metadata_track_name[i] }}</div>
+                {{ data.master_metadata_album_artist_name[i] }}
+            </div>
+            <span class="badge text-bg rounded-pill">{{ data.Count[i] }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function updateNumSongs() {
+        var n = document.getElementById("num_songs_in").value; // Get value from the slider
+        document.getElementById("num_songs_out").innerHTML = n; // Update value in the label
+    }
+    
+    // Required to ensure initial value displays when window first loaded
+    window.onload = function() {
+        updateNumSongs();
+    }
+</script>
+{% endblock %}

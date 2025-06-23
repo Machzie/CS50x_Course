@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Artist
+{% endblock %}
+
+{% block main %}
+    <h1 class="mb-0">{{ artist[1] }}</h1>
+    <span class="badge text-bg">{{ artist[2] }}</span>
+    <hr>
+    <div>
+        <h2 class="h2-a">Headlining</h2>
+        <ul class="table-ul">
+            {% for lineup in lineups %}
+                {% if lineup[2] == 1 %}
+                    <li>
+                        <img src="{{ url_for('static', filename='thumbnails/' + lineup[1] + '.jfif') }}" alt="{{ lineup[1] }}" class="festival_img">
+                        <a href="{{ url_for('festival_page', festival_id=lineup[0]) }}" class="festival-name">{{ lineup[1] }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}    
+        </ul>
+        <hr class="hr-gradient-green">
+        <h2 class="h2-a">On the Lineup</h2>
+        <ul class="table-ul">
+            {% for lineup in lineups %}
+                {% if lineup[2] == 0 %}
+                    <li>
+                        <img src="{{ url_for('static', filename='thumbnails/' + lineup[1] + '.jfif') }}" alt="{{ lineup[1] }}" class="festival_img">
+                        <a href="{{ url_for('festival_page', festival_id= lineup[0]) }}" class="festival-name">{{ lineup[1] }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}    
+        </ul>        
+        <hr class="hr-gradient-green">
+    </div>
+    <div>
+        <h2 class="h2-a">Your Streaming Stats</h2>
+        <br>
+        {% if fig is not none %}
+            {{ fig | safe }}
+        {% else %}
+            <span><a href="/">Import data</a> to see your stats!</span>
+        {% endif %}
+    </div>
+{% endblock %}
